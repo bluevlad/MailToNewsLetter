@@ -1,4 +1,4 @@
-import google.generativeai as genai
+from google import genai
 import os
 import json
 import logging
@@ -10,13 +10,12 @@ class LLMProcessor:
         if not self.api_key:
             # Fallback to config if not in env (though env is recommended)
             self.api_key = self.config.get('gemini', {}).get('api_key')
-        
+
         if not self.api_key:
             raise ValueError("Google API Key not found. Set GOOGLE_API_KEY env var.")
 
-        genai.configure(api_key=self.api_key)
-        self.model_name = self.config.get('gemini', {}).get('model', 'gemini-pro')
-        self.model = genai.GenerativeModel(self.model_name)
+        self.client = genai.Client(api_key=self.api_key)
+        self.model_name = self.config.get('gemini', {}).get('model', 'gemini-2.0-flash')
     
     def synthesize_report(self, topic, articles):
         """
@@ -58,7 +57,10 @@ class LLMProcessor:
         """
 
         try:
-            response = self.model.generate_content(prompt)
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents=prompt
+            )
             text = response.text.replace('```json', '').replace('```', '').strip()
             return json.loads(text)
 

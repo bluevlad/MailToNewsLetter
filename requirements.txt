@@ -6,7 +6,7 @@ duckduckgo-search
 trafilatura
 jinja2
 requests
-google-generativeai
+google-genai
 PyYAML
 python-dotenv
 

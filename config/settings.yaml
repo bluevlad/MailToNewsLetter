@@ -11,7 +11,7 @@ keywords:
 #   base_url: "http://localhost:11434"
 
 gemini:
-  model: "gemini-pro"
+  model: "gemini-2.0-flash"
   # api_key is loaded from GOOGLE_API_KEY environment variable
 
 email:

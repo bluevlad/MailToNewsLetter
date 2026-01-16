@@ -1,5 +1,14 @@
 import os
 import sys
+import io
+
+# Fix Windows console encoding for emoji support
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
+# Add project root to sys.path to ensure imports work if run from specific dirs
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import yaml
 import datetime
 import time
@@ -11,9 +20,6 @@ from src.search_engine import SearchEngine
 from src.scraper import ContentScraper
 
 from dotenv import load_dotenv
-
-# Add project root to sys.path to ensure imports work if run from specific dirs
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 def load_config():
     # Load .env file
