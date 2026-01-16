@@ -1,6 +1,10 @@
 import logging
 import time
-from duckduckgo_search import DDGS
+
+try:
+    from ddgs import DDGS
+except ImportError:
+    from duckduckgo_search import DDGS
 
 class SearchEngine:
     def __init__(self, max_retries=3):
@@ -15,17 +19,17 @@ class SearchEngine:
         """
         # Force exclude medium.com to find external sources
         final_query = f"{query} -site:medium.com"
-        
-        logging.info(f"🔎 Searching for: {final_query}")
-        
+
+        logging.info(f"Searching for: {final_query}")
+
         for attempt in range(self.max_retries):
             try:
-                with DDGS() as ddgs:
-                    results = list(ddgs.text(final_query, max_results=max_results))
-                    if results:
-                        return results
+                ddgs = DDGS()
+                results = list(ddgs.text(final_query, max_results=max_results))
+                if results:
+                    return results
             except Exception as e:
-                logging.warning(f"⚠️ Search attempt {attempt+1} failed: {e}")
+                logging.warning(f"Search attempt {attempt+1} failed: {e}")
                 time.sleep(2)  # Wait a bit before retry
-        
+
         return []

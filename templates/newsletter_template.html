@@ -90,6 +90,29 @@
             text-decoration: none;
         }
 
+        .fact-check {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+
+        .fact-check h4 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 1em;
+        }
+
+        .confidence-meter {
+            margin-bottom: 10px;
+        }
+
+        .verifications {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -122,6 +145,10 @@
                 </div>
                 {% endfor %}
             </div>
+
+            {% if report.fact_check_html %}
+            {{ report.fact_check_html | safe }}
+            {% endif %}
         </div>
         {% endfor %}
 

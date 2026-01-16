@@ -13,6 +13,13 @@ token.json
 credentials.json
 .env
 
+# Logs and temporary files
+*.log
+output.txt
+
+# Test scripts (temporary)
+check_*.py
+
 # Configuration
 # config/settings.yaml will be sanitized and tracked
 # Keep the template if we make one, but ignore the real settings
