@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+ENV/
+
+# Secrets
+token.json
+credentials.json
+.env
+
+# Configuration
+# config/settings.yaml will be sanitized and tracked
+# Keep the template if we make one, but ignore the real settings

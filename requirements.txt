@@ -1,0 +1,12 @@
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
+beautifulsoup4
+duckduckgo-search
+trafilatura
+jinja2
+requests
+google-generativeai
+PyYAML
+python-dotenv
+

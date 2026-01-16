@@ -1,0 +1,25 @@
+keywords:
+  - "LLM"
+  - "Python"
+  - "System Design"
+  - "React"
+  - "Startup"
+  - "Productivity"
+
+# ollama:
+#   model: "mistral"
+#   base_url: "http://localhost:11434"
+
+gemini:
+  model: "gemini-pro"
+  # api_key is loaded from GOOGLE_API_KEY environment variable
+
+email:
+  sender: "me"  # 'me' uses the authenticated user's email
+  subject_prefix: "[Daily Research] "
+
+search:
+  max_results: 2
+  excluded_domains:
+    - "medium.com"
+    - "youtube.com"
